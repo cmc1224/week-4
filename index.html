@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2018 Central Park Squirrel Census</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+    <link href = "css/styles.css" rel ="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="title">
+        2018 Central Park Squirrel Census       
+        </div>
+        <div class="description">
+        View squirrel spottings as clusters or  individual points! 
+        <br>
+        <br>
+        Zoom in by clicking a specific cluster, using the button below, or however  you regularly zoom in on a webpage
+        Zoom out by using the button below, or however you regularly zoom out on a webpage
+        <br>
+        <button id="cluster-zoom" class="button-28" role="button">Cluster Zoom</button>
+        <button id="point-zoom" class="button-28" role="button">Point Level Zoom</button>
+            <br>
+            <br>
+        Click on individual points to find out what that squirrel was doing when spotted!
+        </div>
+
+    </div>
+
+
+
+    <div id="map"></div>
+    <div class = "map-overlay" id = "legend">
+        <div>
+            <span class = "title"> Primary Fur Color </span>
+        </div>
+        <div>
+            <span class = "legend-key" style ="background-color:#942a19"></span>
+            <span>Cinnamon</span>
+        </div>
+        <div>
+            <span class = "legend-key" style ="background-color:#545559"></span>
+            <span>Gray</span>
+        </div>
+        <div>
+            <span class = "legend-key" style ="background-color:#121212"></span>
+            <span>Black</span>
+        </div>
+    </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+    <script src = "data/SquirrelData.js"></script>
+    <script src = "js/scripts.js"></script>
+</body>
+
+</html>
