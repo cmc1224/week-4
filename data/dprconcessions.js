@@ -151,35 +151,6 @@ const dprconcessions =
    "type": "Feature",
    "geometry": {
       "type": "Point",
-      "coordinates":  { }
-   },
-   "properties": {
-   "name":"Central Park Souvenirs",
-   "location/0":"Various Locations",
-   "park_id":"M010",
-   "permit_start_date":"4/23/2015",
-   "permit_end_date":"6/30/2023",
-   "permit_number":"M10-SV",
-   "description":"",
-   "type":"Souvenir Stand",
-   "phones/phone/0":"",
-   "websites/website/0":"",
-   "emails/email/0":"",
-   "locations/location/1/lat":"",
-   "locations/location/1/lng":"",
-   "locations/location/2/lat":"",
-   "locations/location/2/lng":"",
-   "locations/location/3/lat":"",
-   "locations/location/3/lng":"",
-   "locations/location/4/lat":"",
-   "locations/location/4/lng":"",
-   "websites/website/1":""
-   }
- },
- {
-   "type": "Feature",
-   "geometry": {
-      "type": "Point",
       "coordinates":  [ -73.970186,40.772644 ]
    },
    "properties": {
@@ -223,35 +194,6 @@ const dprconcessions =
    "phones/phone/0":"(212) 316-0800",
    "websites/website/0":"http://centralparktenniscenter.com/",
    "emails/email/0":"cptennis@earthlink.net",
-   "locations/location/1/lat":"",
-   "locations/location/1/lng":"",
-   "locations/location/2/lat":"",
-   "locations/location/2/lng":"",
-   "locations/location/3/lat":"",
-   "locations/location/3/lng":"",
-   "locations/location/4/lat":"",
-   "locations/location/4/lng":"",
-   "websites/website/1":""
-   }
- },
- {
-   "type": "Feature",
-   "geometry": {
-      "type": "Point",
-      "coordinates":  { }
-   },
-   "properties": {
-   "name":"Columbus Circle Holiday Market",
-   "location/0":"Columbus Circle",
-   "park_id":"M010",
-   "permit_start_date":"11/22/2018",
-   "permit_end_date":"11/21/2023",
-   "permit_number":"M10-CC-AS",
-   "description":"Each year from just after Thanksgiving until Christmas Eve, the Columbus Circle Holiday Market, now a holiday tradition in Manhattan, offers a wonderful opportunity for small business owners and artisan crafts people to sell their wares to members of the public looking for unique holiday gifts for friends and family. Items sold at the market range from handmade jewelry and soap to artisan tree ornaments and unique neckties. The market is open 7 days a week during the season.",
-   "type":"Art Show",
-   "phones/phone/0":"212.529.9262",
-   "websites/website/0":"http://www.urbanspacenyc.com/",
-   "emails/email/0":"info@urbanspace.com",
    "locations/location/1/lat":"",
    "locations/location/1/lng":"",
    "locations/location/2/lat":"",
