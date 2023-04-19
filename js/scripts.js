@@ -102,8 +102,8 @@ map.on('load', function () {
         source: 'dprconcessions',
         paint: {
             'circle-color': '#e07110',
-            'circle-radius': 8,
-            'circle-opacity': .6
+            'circle-radius': 6,
+            'circle-opacity': 0.8
         }
     })
 }
