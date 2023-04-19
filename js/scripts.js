@@ -8,7 +8,7 @@ const NYC_Coordinates = [-73.96577309926411, 40.78300683969073]
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/light-v11', // style URL
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: NYC_Coordinates, // starting position [lng, lat]
     zoom: 12, // starting zoom
     pitch: 0
@@ -76,20 +76,33 @@ map.on('load', function () {
                 'match',
                 ['get', 'primary_fur_color'],
                 'Gray',
-                '#545559',
+                '#a19999',
                 'Black',
                 '#121212',
                 'Cinnamon',
                 '#942a19',
         /* other */ '#c5dbe3'
             ],
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff'
         },
         minzoom: 15
     });
 
+
+    map.addSource('dprconcessions', {
+        type: 'geojson',
+        data: dprconcessions,
+    });
+
+    map.addLayer({
+        id: 'point-dprconcessions',
+        type: 'circle',
+        source: 'dprconcessions',
+        paint: {
+            'circle-color': '#3358ff',
+            'circle-radius': 8,
+            'circle-opacity': .6
+        }
+    })
 }
 )
 map.on('click', 'unclustered-squirrel-data', (e) => {
@@ -105,39 +118,41 @@ map.on('click', 'unclustered-squirrel-data', (e) => {
     const foraging =
         e.features[0].properties.foraging === 'true' ? 'yes' : 'no';
 
-    // Ensure that if the map is zoomed out such that
-    // multiple copies of the feature are visible, the
-    // popup appears over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-
     new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
-            `What was the squirrel doing? <br> Running?: ${running} <br> Chasing another squirrel?: ${chasing}
-            <br> Climbing something?: ${climbing} <br> Eating?: ${eating} <br> Foraging?: ${foraging}`
+            `<dl>What was the squirrel doing?</dl> 
+            <dt> Running?: 
+            <dd> ${running} 
+            <dt>Chasing another squirrel?:  
+            <dd>${chasing} 
+            <dt>Climbing something?: 
+            <dd>${climbing} 
+            <dt> Eating?: 
+            <dd>${eating} 
+            <dt> Foraging?: 
+            <dd>${foraging}`
         )
         .addTo(map);
 })
 
 map.on('click', 'cluster-squirrel-data', (e) => {
     const features = map.queryRenderedFeatures(e.point, {
-    layers: ['cluster-squirrel-data']
+        layers: ['cluster-squirrel-data']
     });
     const clusterId = features[0].properties.cluster_id;
     map.getSource('SquirrelData').getClusterExpansionZoom(
-    clusterId,
-    (err, zoom) => {
-    if (err) return;
-     
-    map.easeTo({
-    center: features[0].geometry.coordinates,
-    zoom: zoom
-    });
-    }
+        clusterId,
+        (err, zoom) => {
+            if (err) return;
+
+            map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom
+            });
+        }
     );
-    });
+});
 
 $('#cluster-zoom').on('click', function () {
     map.flyTo({
