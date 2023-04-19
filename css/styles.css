@@ -4,7 +4,6 @@ body {
     font-family: arial;
 }
 
-
 #map {
     position: absolute;
     top: 0;
@@ -20,6 +19,32 @@ body {
     background-color: darkseagreen;
 }
 
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.sidebar {
+    position: absolute;
+    width: 350px;
+    z-index: 10;
+    background: rgba(245, 245, 245, 0.833);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*description table*/
 dl {
     width: 300px;
     overflow: hidden;
@@ -54,50 +79,24 @@ dd {
     font-family: Helvetica;
 }
 
-.sidebar {
-    position: absolute;
-    width: 350px;
-    z-index: 10;
-    background: rgba(245, 245, 245, 0.833);
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
-    margin-left: 15px;
-    font-family: sans-serif
-}
 
-
-
-.title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.description {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
+/*legend*/
 .map-overlay {
     position: absolute;
     bottom: 0;
     right: 0;
     background: rgba(245, 245, 245, 0.833);
-    ;
     margin-right: 20px;
-    font-family: Arial, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     overflow: auto;
     border-radius: 3px;
-}
-
-#legend {
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     line-height: 18px;
-    height: 80px;
+    height: 110px;
     margin-bottom: 40px;
-    width: 250px;
+    width: 200px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .legend-key {
@@ -108,49 +107,3 @@ dd {
     margin-right: 5px;
 }
 
-/* another beautiful button from https://getcssscan.com/css-buttons-examples */
-
-.button-28 {
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 16px;
-    font-weight: 600;
-    line-height: normal;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    min-height: 60px;
-    min-width: 0;
-    outline: none;
-    padding: 16px 24px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 100%;
-    will-change: transform;
-}
-
-.button-28:disabled {
-    pointer-events: none;
-}
-
-.button-28:hover {
-    color: #fff;
-    background-color: black;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-}
-
-.button-28:active {
-    box-shadow: none;
-    transform: translateY(0);
-}

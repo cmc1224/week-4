@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>2018 Central Park Squirrel Census</title>
+    <title>Squirrel Hot Spots</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 
     <div class="sidebar">
         <div class="title">
-            2018 Central Park Squirrel Census
+            Do Hungry Squirrels eat at Parks Concessions Stands?
         </div>
         <div class="description">
             According to NYC Open Data, The Squirrel Census (https://www.thesquirrelcensus.com/)
@@ -25,17 +25,13 @@
             communications, and interactions between squirrels and with humans.
             <br>
             <br>
-            This map depicts all recorded squirrel spottings, their primary fur color, and activity at the time of
-            spotting.
+            This map depicts all squirrels who were "eating" when spotted, their primary fur color, and other activities at the time of
+            spotting. Concessions stands are also displayed to see to if that's where the squirrels dine, too. 
             <br>
             <br>
-            View squirrel spottings as clusters or zoom in to see individual points!
+            View squirrel spottings as clusters or zoom in to see individual points! 
             <br>
-            <div>
-                <button id="cluster-zoom" class="button-28" role="button">Cluster Zoom</button>
-                <button id="point-zoom" class="button-28" role="button">Point Level Zoom</button>
-            </div>
-            Click on a points to find out what that squirrel was doing when spotted!
+            Click on a point to find out what that squirrel was doing when spotted (other than eating)!
         </div>
 
     </div>
@@ -46,6 +42,12 @@
 
     <div class="map-overlay" id="legend">
         <div>
+            <span class="legend-key" style="background-color:#e07110"></span>
+            <span>Concession Stands</span>
+            <br>
+        </div>
+        <div>
+            <br>
             <span class="title"> Primary Fur Color </span>
         </div>
         <div>
@@ -63,6 +65,7 @@
     </div>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
     <script src="data/SquirrelData.js"></script>
+    <script src="data/EatingSquirrels.js"></script>
     <script src="data/dprconcessions.js"></script>
     <script src="js/scripts.js"></script>
 </body>

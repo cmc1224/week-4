@@ -14,21 +14,23 @@ const map = new mapboxgl.Map({
     pitch: 0
 });
 
+map.addControl(new mapboxgl.NavigationControl());
+
 map.on('load', function () {
 
     // add the point source and layer
-    map.addSource('SquirrelData', {
+    map.addSource('EatingSquirrels', {
         type: 'geojson',
-        data: SquirrelData,
+        data: EatingSquirrels,
         cluster: true,
         clusterMaxZoom: 14, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+        clusterRadius: 40 // Radius of each cluster when clustering points (defaults to 50)
     })
 
     map.addLayer({
         id: 'cluster-squirrel-data',
         type: 'circle',
-        source: 'SquirrelData',
+        source: 'EatingSquirrels',
         paint: {
             // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
             // with three steps to implement three types of circles:
@@ -41,7 +43,7 @@ map.on('load', function () {
                 '#51bbd6',
                 10,
                 '#f1f075',
-                100,
+                50,
                 '#f28cb1'
             ],
             'circle-radius': [
@@ -50,27 +52,27 @@ map.on('load', function () {
                 10,
                 10,
                 20,
-                100,
+                50,
                 30
             ]
-        }
+        },
     })
 
     map.addLayer({
         id: 'cluster-count-squirrel-data',
         type: 'symbol',
-        source: 'SquirrelData',
+        source: 'EatingSquirrels',
         layout: {
             'text-field': ['get', 'point_count'],
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
             'text-size': 12
-        }
+        },
     });
 
     map.addLayer({
         id: 'unclustered-squirrel-data',
         type: 'circle',
-        source: 'SquirrelData',
+        source: 'EatingSquirrels',
         paint: {
             'circle-color': [
                 'match',
@@ -83,8 +85,9 @@ map.on('load', function () {
                 '#942a19',
         /* other */ '#c5dbe3'
             ],
-        },
-        minzoom: 15
+         },   
+        minzoom: 15,
+
     });
 
 
@@ -98,13 +101,15 @@ map.on('load', function () {
         type: 'circle',
         source: 'dprconcessions',
         paint: {
-            'circle-color': '#3358ff',
+            'circle-color': '#e07110',
             'circle-radius': 8,
             'circle-opacity': .6
         }
     })
 }
 )
+
+
 map.on('click', 'unclustered-squirrel-data', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const running =
@@ -141,7 +146,7 @@ map.on('click', 'cluster-squirrel-data', (e) => {
         layers: ['cluster-squirrel-data']
     });
     const clusterId = features[0].properties.cluster_id;
-    map.getSource('SquirrelData').getClusterExpansionZoom(
+    map.getSource('EatingSquirrels').getClusterExpansionZoom(
         clusterId,
         (err, zoom) => {
             if (err) return;
@@ -153,17 +158,3 @@ map.on('click', 'cluster-squirrel-data', (e) => {
         }
     );
 });
-
-$('#cluster-zoom').on('click', function () {
-    map.flyTo({
-        center: NYC_Coordinates,
-        zoom: 12,
-    })
-})
-
-$('#point-zoom').on('click', function () {
-    map.flyTo({
-        center: NYC_Coordinates,
-        zoom: 15,
-    })
-})
