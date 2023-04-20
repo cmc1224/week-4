@@ -9,7 +9,7 @@ const restaurant_icon = document.createElement('div');
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    style: 'mapbox://styles/cmc1224/clgp71znh001901qmer86ham4', // style URL
     center: NYC_Coordinates, // starting position [lng, lat]
     zoom: 13, // starting zoom
     pitch: 0
@@ -35,10 +35,7 @@ map.on('load', () => {
                     'icon-image': 'food-icon',
                     'icon-size': 0.04,
                 },
-                paint: {
-                    'icon-color': '#fc9403'
-                }
-            })
+            });
     });
 })
 map.on('load', function () {
@@ -62,15 +59,7 @@ map.on('load', function () {
             //   * Blue, 20px circles when point count is less than 100
             //   * Yellow, 30px circles when point count is between 100 and 750
             //   * Pink, 40px circles when point count is greater than or equal to 750
-            'circle-color': [
-                'step',
-                ['get', 'point_count'],
-                '#51bbd6',
-                10,
-                '#f1f075',
-                50,
-                '#f28cb1'
-            ],
+            'circle-color': '#D09259',
             'circle-radius': [
                 'step',
                 ['get', 'point_count'],
@@ -91,8 +80,11 @@ map.on('load', function () {
             'text-field': ['get', 'point_count'],
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
             'text-size': 12,
-            'text-allow-overlap':true
+            'text-allow-overlap':true,
         },
+        paint: {
+            'text-color': '#562A0E'
+        }
     });
 
     map.addLayer({
@@ -109,7 +101,7 @@ map.on('load', function () {
                 '#121212',
                 'Cinnamon',
                 '#942a19',
-        /* other */ '#c5dbe3'
+        /* other */ '#D09259'
             ],
         },
         minzoom: 15,
@@ -149,7 +141,7 @@ map.on('click', 'unclustered-squirrel-data', (e) => {
             <dd>${foraging}`
         )
         .addTo(map);
-})
+});
 
 map.on('click', 'cluster-squirrel-data', (e) => {
     const features = map.queryRenderedFeatures(e.point, {
