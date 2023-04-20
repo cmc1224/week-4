@@ -4,6 +4,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY21jMTIyNCIsImEiOiJjbGc1cWE0aWswNXZzM2ZsaW16cmYzb3BkIn0.6GQ2v6YsggVcqkW-VpgidA';
 
 const NYC_Coordinates = [-73.96577309926411, 40.78300683969073]
+const restaurant_icon = document.createElement('div');
 
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -16,6 +17,30 @@ const map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.NavigationControl());
 
+map.on('load', () => {
+    map.loadImage('img/meal-food-icon.png', (error, image) => {
+        if (error) throw error;
+
+        map.addImage('food-icon', image);
+        map.addSource('dprconcessions', {
+            type: 'geojson',
+            data: dprconcessions,
+        }),
+
+            map.addLayer({
+                id: 'point-dprconcessions',
+                type: 'symbol',
+                source: 'dprconcessions',
+                layout: {
+                    'icon-image': 'food-icon',
+                    'icon-size': 0.04,
+                },
+                paint: {
+                    'icon-color': '#fc9403'
+                }
+            })
+    });
+})
 map.on('load', function () {
 
     // add the point source and layer
@@ -85,29 +110,13 @@ map.on('load', function () {
                 '#942a19',
         /* other */ '#c5dbe3'
             ],
-         },   
+        },
         minzoom: 15,
 
     });
+})
 
 
-    map.addSource('dprconcessions', {
-        type: 'geojson',
-        data: dprconcessions,
-    });
-
-    map.addLayer({
-        id: 'point-dprconcessions',
-        type: 'circle',
-        source: 'dprconcessions',
-        paint: {
-            'circle-color': '#e07110',
-            'circle-radius': 6,
-            'circle-opacity': 0.8
-        }
-    })
-}
-)
 
 
 map.on('click', 'unclustered-squirrel-data', (e) => {
