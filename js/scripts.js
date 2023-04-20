@@ -11,7 +11,7 @@ const map = new mapboxgl.Map({
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: NYC_Coordinates, // starting position [lng, lat]
-    zoom: 12, // starting zoom
+    zoom: 13, // starting zoom
     pitch: 0
 });
 
