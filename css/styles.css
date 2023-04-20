@@ -11,14 +11,6 @@ body {
     width: 100%;
 }
 
-.mapboxgl-popup-content {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    width: 300px;
-    background-color:#562A0E;
-}
-
 .title {
     font-size: 20px;
     font-weight: 700;
@@ -44,7 +36,15 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/*description table*/
+/*pop up description table*/
+.mapboxgl-popup-content {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 300px;
+    background-color:#562A0E;
+}
+
 dl {
     width: 300px;
     overflow: hidden;

@@ -4,7 +4,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY21jMTIyNCIsImEiOiJjbGc1cWE0aWswNXZzM2ZsaW16cmYzb3BkIn0.6GQ2v6YsggVcqkW-VpgidA';
 
 const NYC_Coordinates = [-73.96577309926411, 40.78300683969073]
-const restaurant_icon = document.createElement('div');
 
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -17,6 +16,7 @@ const map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.NavigationControl());
 
+//Department of Parks and Recreation Concessions Locations in Central Park
 map.on('load', () => {
     map.loadImage('img/meal-food-icon.png', (error, image) => {
         if (error) throw error;
@@ -38,9 +38,9 @@ map.on('load', () => {
             });
     });
 })
-map.on('load', function () {
 
-    // add the point source and layer
+//Squirrels!
+map.on('load', function () {
     map.addSource('EatingSquirrels', {
         type: 'geojson',
         data: EatingSquirrels,
@@ -49,16 +49,13 @@ map.on('load', function () {
         clusterRadius: 40 // Radius of each cluster when clustering points (defaults to 50)
     })
 
+
+    //squirrel clusters
     map.addLayer({
         id: 'cluster-squirrel-data',
         type: 'circle',
         source: 'EatingSquirrels',
         paint: {
-            // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-            // with three steps to implement three types of circles:
-            //   * Blue, 20px circles when point count is less than 100
-            //   * Yellow, 30px circles when point count is between 100 and 750
-            //   * Pink, 40px circles when point count is greater than or equal to 750
             'circle-color': '#D09259',
             'circle-radius': [
                 'step',
@@ -87,6 +84,7 @@ map.on('load', function () {
         }
     });
 
+//squirrel points
     map.addLayer({
         id: 'unclustered-squirrel-data',
         type: 'circle',
@@ -110,7 +108,7 @@ map.on('load', function () {
 })
 
 
-
+//squirrel activities
 
 map.on('click', 'unclustered-squirrel-data', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
