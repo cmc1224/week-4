@@ -90,7 +90,8 @@ map.on('load', function () {
         layout: {
             'text-field': ['get', 'point_count'],
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12
+            'text-size': 12,
+            'text-allow-overlap':true
         },
     });
 
@@ -122,29 +123,29 @@ map.on('load', function () {
 map.on('click', 'unclustered-squirrel-data', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const running =
-        e.features[0].properties.running === 'true' ? 'yes' : 'no';
+        e.features[0].properties.running === 'true' ? 'Yes' : 'No';
     const chasing =
-        e.features[0].properties.chasing === 'true' ? 'yes' : 'no';
+        e.features[0].properties.chasing === 'true' ? 'Yes' : 'No';
     const climbing =
-        e.features[0].properties.climbing === 'true' ? 'yes' : 'no';
+        e.features[0].properties.climbing === 'true' ? 'Yes' : 'No';
     const eating =
-        e.features[0].properties.eating === 'true' ? 'yes' : 'no';
+        e.features[0].properties.eating === 'true' ? 'Yes' : 'No';
     const foraging =
-        e.features[0].properties.foraging === 'true' ? 'yes' : 'no';
+        e.features[0].properties.foraging === 'true' ? 'Yes' : 'No';
 
     new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
             `<dl>What was the squirrel doing?</dl> 
-            <dt> Running?: 
+            <dt> Running? 
             <dd> ${running} 
-            <dt>Chasing another squirrel?:  
+            <dt>Chasing another squirrel?  
             <dd>${chasing} 
-            <dt>Climbing something?: 
+            <dt>Climbing something?
             <dd>${climbing} 
-            <dt> Eating?: 
+            <dt> Eating? 
             <dd>${eating} 
-            <dt> Foraging?: 
+            <dt> Foraging? 
             <dd>${foraging}`
         )
         .addTo(map);
