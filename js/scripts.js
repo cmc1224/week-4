@@ -142,21 +142,3 @@ map.on('click', 'unclustered-squirrel-data', (e) => {
         )
         .addTo(map);
 });
-
-map.on('click', 'cluster-squirrel-data', (e) => {
-    const features = map.queryRenderedFeatures(e.point, {
-        layers: ['cluster-squirrel-data']
-    });
-    const clusterId = features[0].properties.cluster_id;
-    map.getSource('EatingSquirrels').getClusterExpansionZoom(
-        clusterId,
-        (err, zoom) => {
-            if (err) return;
-
-            map.easeTo({
-                center: features[0].geometry.coordinates,
-                zoom: zoom
-            });
-        }
-    );
-});
